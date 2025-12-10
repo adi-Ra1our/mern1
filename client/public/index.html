@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Performance Analytics Dashboard</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <h1>📊 Student Performance Analytics (OBE)</h1>
+  <h1>Full Stack Developement</h1>
+
+  <section id="input-section">
+    <h2>Enter Student Data</h2>
+    <input type="text" id="name" placeholder="Student Name">
+    <input type="number" id="roll" placeholder="Roll No">
+    <input type="number" id="co1" placeholder="CIE1 Marks">
+    <input type="number" id="co2" placeholder="CIE2 Marks">
+    <input type="number" id="co3" placeholder="CIE3 Marks">
+    <button onclick="addStudent()">Add Student</button>
+  </section>
+
+  <section id="table-section">
+    <h2>Student Records</h2>
+    <table border="1" id="studentTable">
+      <tr>
+        <th>Name</th>
+        <th>Roll</th>
+        <th>CIE1</th>
+        <th>CIE2</th>
+        <th>CIE3</th>
+        <th>Average</th>
+      </tr>
+    </table>
+  </section>
+
+  <section id="chart-section">
+    <h2>Performance Analytics</h2>
+    <label for="rollSelect">Select Roll No:</label>
+    <select id="rollSelect" onchange="showStudentPerformance()">
+      <option value="">-- Select --</option>
+    </select>
+    <div id="studentInfo"></div>
+    <canvas id="coChart" width="600" height="300"></canvas>
+  </section>
+
+  <section id="mapping-section">
+    <h2>CIE–SKILLS Mapping</h2>
+    <p>Assign weightages (0–1) for each CIE → Skill mapping.</p>
+    <table border="1" id="mappingTable">
+      <tr>
+        <th>CIE</th>
+        <th>Front End</th>
+        <th>Backend</th>
+        <th>Database</th>
+      </tr>
+      <tr>
+        <td>CIE1</td>
+        <td><input type="number" id="map-co1-po1" value="0.7"></td>
+        <td><input type="number" id="map-co1-po2" value="0.3"></td>
+        <td><input type="number" id="map-co1-po3" value="0"></td>
+      </tr>
+      <tr>
+        <td>CIE2</td>
+        <td><input type="number" id="map-co2-po1" value="0"></td>
+        <td><input type="number" id="map-co2-po2" value="0.5"></td>
+        <td><input type="number" id="map-co2-po3" value="0.5"></td>
+      </tr>
+      <tr>
+        <td>CIE3</td>
+        <td><input type="number" id="map-co3-po1" value="0.4"></td>
+        <td><input type="number" id="map-co3-po2" value="0.6"></td>
+        <td><input type="number" id="map-co3-po3" value="0"></td>
+      </tr>
+    </table>
+    <button onclick="calculateAttainment()">Calculate Attainment</button>
+  </section>
+
+  <section id="attainment-section">
+    <h2>Attainment Results</h2>
+    <div id="attainmentOutput"></div>
+    <canvas id="poChart" width="600" height="300"></canvas>
+  </section>
+
+  <script src="/script.js"></script>
+</body>
+</html>
