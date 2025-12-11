@@ -1,7 +1,7 @@
 // client/script.js (API-backed version)
-// NOTE: keep server running at http://localhost:5000
+// NOTE: Backend deployed on Render
 
-const API_BASE = 'http://localhost:5001/api/students';
+const API_BASE = 'https://mern1-backend-bpl9.onrender.com/api/students';
 
 let students = [];
 let coChart = null;
